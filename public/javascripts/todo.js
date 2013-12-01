@@ -17,6 +17,9 @@
 			this.html.find('.task-input')
 		);
 
+		this.taskInput.on("enter", function(value){
+			alert('enter pressed' + value);
+		});
 		this.loader.init();
 		//this.taskInput.init();
 	};

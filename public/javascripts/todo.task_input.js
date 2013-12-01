@@ -4,6 +4,10 @@
 		this.addEventListeners();
 	};
 
+	Todo.TaskInput.prototype.on = function(event, callback){
+		this.html.on("enter", callback);
+	}
+
 	Todo.TaskInput.prototype.addEventListeners = function(){
 		this.html.on("keydown",$.proxy(this,"onKeyDown"));
 	};
@@ -13,9 +17,6 @@
 			return true;
 		}
 		event.preventDefault();
-		console.log(event.target.value);
 		this.html.trigger("enter",this.html.value);
-		//this.callback(event.target.value);
-		//this.callback(this.html.value);
 	};
 })(Todo);

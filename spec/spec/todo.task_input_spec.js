@@ -10,9 +10,9 @@ describe("Todo.TaskInput", function(){
 	it("tiggers enter event", function(){
 		event = $.Event("keydown");
 		event.which = 13;
-		input.on("keydown", callback);
+		taskInput.on("enter", callback);
 		input.trigger(event); //simulates <enter> key
 
-		expect(callback).wasCalledWith("some task");
+		expect(callback.mostRecentCall.args[1]).toEqual("some task");
 	});
 });

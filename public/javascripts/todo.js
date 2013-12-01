@@ -3,12 +3,21 @@
 	window.Todo = Todo = {};
 
 	Todo.init = function(html){
-		console.log(this);
+		//Injecting elements
 		this.html = $(html);
+
+		//Responsible for toggling loader and page
 		this.loader = new Todo.Loader(
-				this.html.find('.loading'),
-				this.html.find('.page')
+			this.html.find('.loading'),
+			this.html.find('.page')
 		);
+
+		//Input task responsible for add new tasks
+		this.taskInput = new Todo.TaskInput(
+			this.html.find('.task-input')
+		);
+
 		this.loader.init();
+		//this.taskInput.init();
 	};
 })();

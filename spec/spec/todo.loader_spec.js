@@ -4,8 +4,6 @@ describe("Todo.Loader", function() {
   beforeEach(function() {
     loading = $("<span/>");
     page = $("<span/>");
-    console.log(page);
-    console.log(loading);
     loader = new Todo.Loader(loading, page);
 
     loader.init();

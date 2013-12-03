@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript" src="closureTests.js"></script>
+	<script type="text/javascript">
+		//builds in memory immediately when the program loads
+		function DiffSquare(a,b){
+			return a*a - b *b;
+		}
+
+		//function expressions. They load only when your program reach the variable.
+		var diff = function(a,b){
+			return a*a - b*b;
+		}; // <-- é obrigatorio uso de ponto-virgula e funcion expression
+
+		var greetings;
+		if (2 === 1){
+			greetings = function(){
+				alert('Tipo 1 de alerta!!');
+			};
+		}else{
+			greetings = function(){
+				alert('Tipo 2 de alerta!!');
+
+			};
+		}
+
+		function Executor(message){			
+			message();
+		}
+
+
+		Executor(greetings);
+
+		function ClosureTest(transport){
+			return function(name){
+				alert('Foi escolhido o meio de transporte: ' + transport + ' para o sujeito: ' + name);
+			}
+		}
+
+		var trainTransport = ClosureTest("Train");
+		var carTransport = ClosureTest("Car");
+		var airplaneTransport = ClosureTest("Airplane");
+
+		//trainTransport("Mario");
+		//carTransport("Luigi");
+		//airplaneTransport("Bowser");
+		//airplaneTransport("Yoshi");
+
+
+		var penguinKiller = warningMaker("PenguinKiller");
+		penguinKiller(2,"Savanah Beach");
+
+
+	</script>
+</body>
+</html>

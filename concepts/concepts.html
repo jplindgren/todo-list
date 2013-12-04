@@ -36,6 +36,7 @@
 
 		Executor(greetings);
 
+		///// OTHER THING /////////////////////
 		function ClosureTest(transport){
 			return function(name){
 				alert('Foi escolhido o meio de transporte: ' + transport + ' para o sujeito: ' + name);
@@ -52,8 +53,97 @@
 		//airplaneTransport("Yoshi");
 
 
-		var penguinKiller = warningMaker("PenguinKiller");
-		penguinKiller(2,"Savanah Beach");
+		///// OTHER THING /////////////////////
+		//var penguinKiller = warningMaker("PenguinKiller");
+		//penguinKiller(2,"Savanah Beach");
+
+
+		///// OTHER THING /////////////////////
+		var listOfSharks = ["Sea Pain", "Great Wheezy", 
+                    "DJ Chewie", "Lil' Bitey", 
+                    "Finmaster Flex", "Swim Khalifa", 
+                    "Ice Teeth", "The Notorious J.A.W."];
+		var listOfTargets = ["icicle bat", "snow yeti", 
+                     "killer penguin", "frost tiger", 
+                     "polar bear", "iceberg", 
+                     "blue witch", "wooly mammoth"];
+
+		var getTargetFor = makeTargetAssigner( listOfSharks, listOfTargets );
+		getTargetFor("Ice Teeth");
+
+
+///// OTHER THING /////////////////////
+		var vehicle1 = {type: "Motorboat", capacity: 6, storedAt: "Ammunition Depot"};
+		var vehicle2 = {type: "Jet Ski", capacity: 1, storedAt: "Reef Dock"};
+		var vehicle3 = {type: "Submarine", capacity: 8, storedAt: "Underwater Outpost"};
+
+		var vehicles = [vehicle1,vehicle2,vehicle3];
+		var findVehicle = function(name,list){
+		  for (var i = 0; i < list.length; i++){
+		    if (list[i].type == name){
+		      return list[i].storedAt;
+		    }
+		  }
+		};
+
+		var vehicleLocation = findVehicle("Jet Ski",vehicles);
+		//alert(vehicleLocation);
+
+
+///// OTHER THING /////////////////////
+		var superBlinders = [ ["Firestorm", 4000], ["Solar Death Ray", 6000], ["Supernova", 12000] ];
+		var lighthouseRock = {
+		  gateClosed: true,
+		  weaponBulbs: superBlinders,
+		  capacity: 30,
+		  secretPassageTo: "Underwater Outpost",
+		  numRangers: 0
+		};
+
+		function addRanger(name, skillz, station){
+			lighthouseRock.numRangers++;
+		  var n = lighthouseRock.numRangers;
+		  lighthouseRock["ranger" + n] = { name: name, skillz : skillz, station : station };
+		}
+
+		addRanger("Nick Walsh", "magnification burn",2);
+		addRanger("Drew Barontini", "uppercut launch",3);
+		addRanger("Christine Wong", "bomb defusing",1);
+		console.log(lighthouseRock);
+
+		var vehicle3 = {
+  type: "Submarine", capacity: 8, storedAt: "Underwater Outpost",
+  ranger1: { name: "Gregg Pollack", skillz: "Lasering", dayOff: "Friday"},
+  ranger2: { name: "Bijan Boustani", skillz: "Roundhouse Kicks", dayOff: "Tuesday"},
+  ranger3: { name: "Ashley Smith", skillz: "Torpedoing", dayOff: "Friday"},
+  ranger4: { name: "Mark Krupinski", skillz: "Sniping", dayOff: "Wednesday"},
+  numRangers: 4
+};
+
+function relieveDuty(vehicle, day){
+  var onDuty = [];
+    var offDuty = [];
+  for (var i = 1; i <= vehicle.numRangers; i++){
+    var ranger = vehicle["ranger" + i];
+    
+    if (ranger.dayOff == day){
+    	offDuty.push(ranger);        
+    }else{
+    	onDuty.push(ranger);
+    }
+    delete vehicle["ranger" + i];
+    vehicle.numRangers--;
+  }
+  
+ 	for (var j = 0; j < onDuty.length; j++){
+    vehicle["ranger" + (j + 1)] = onDuty[j];
+  }
+  console.log(vehicle);
+  console.log(offDuty);
+  return offDuty;
+}
+
+relieveDuty(vehicle3,"Friday");
 
 
 	</script>

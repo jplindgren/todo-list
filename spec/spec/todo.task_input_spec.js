@@ -7,7 +7,7 @@ describe("Todo.TaskInput", function(){
 		taskInput = new Todo.TaskInput(input);
 	});
 
-	it("tiggers enter event", function(){
+	it("triggers enter event", function(){
 		event = $.Event("keydown");
 		event.which = 13;
 		taskInput.on("enter", callback);
@@ -15,4 +15,15 @@ describe("Todo.TaskInput", function(){
 
 		expect(callback.mostRecentCall.args[1]).toEqual("some task");
 	});
+
+	it("skip enter event when does not press enter", function(){
+		event = $.Event("keydown");
+		event.which = 27;
+
+		taskInput.on("enter",callback); //sets event listerner to the spy
+		input.trigger(event);
+
+		expect(callback).wasNotCalled();
+	});
+
 });

@@ -13,9 +13,11 @@
 		);
 
 		//Input task responsible for add new tasks
-		this.taskInput = new Todo.TaskInput(
-			this.html.find('.task-input')
-		);
+		this.taskInput = new Todo.TaskInput( this.html.find('.task-input') );
+
+		//Input manager manages inputask's enter event and creates the task when it needs.
+		this.taskManager = new Todo.TaskManager( this.taskInput );
+
 
 		this.taskInput.on("enter", function(value){
 			alert('enter pressed' + value);
